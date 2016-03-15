@@ -28,8 +28,7 @@ namespace DddInPractice.Logic
         public void BuySnack()
         {
             MoneyInside += MoneyInTransaction;
-
-            //MoneyInTransaction = 0;
+            MoneyInTransaction = None;
         }
     }
 }
