@@ -101,5 +101,35 @@ namespace DddInPractice.Tests
 
             money.Amount.ShouldBeEquivalentTo(expectedAmount);
         }
+
+        [Fact]
+        public void Substraction_of_two_moneys_produces_correct_result()
+        {
+            var money1 = new Money(10, 10, 10, 10, 10, 10);
+            var money2 = new Money(1, 2, 3, 4, 5, 6);
+
+            var result = money1 - money2;
+
+            result.OneCentCount.Should().Be(9);
+            result.TenCentCount.Should().Be(8);
+            result.QuarterCount.Should().Be(7);
+            result.OneDollarCount.Should().Be(6);
+            result.FiveDollarCount.Should().Be(5);
+            result.TwentyDollarCount.Should().Be(4);
+        }
+
+        [Fact]
+        public void Cannot_subtract_more_than_exists()
+        {
+            var money1 = new Money(0, 1, 0, 0, 0, 0);
+            var money2 = new Money(1, 0, 0, 0, 0, 0);
+
+            Action action = () =>
+            {
+                var result = money1 - money2;
+            };
+
+            action.ShouldThrow<InvalidOperationException>();
+        }
     }
 }
