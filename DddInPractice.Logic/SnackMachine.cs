@@ -1,9 +1,11 @@
-﻿namespace DddInPractice.Logic
+﻿using static DddInPractice.Logic.Money;
+
+namespace DddInPractice.Logic
 {
     public sealed class SnackMachine : Entity
     {
-        public Money MoneyInside { get; private set; }
-        public Money MoneyInTransaction { get; private set; }
+        public Money MoneyInside { get; private set; } = None;
+        public Money MoneyInTransaction { get; private set; } = None;
 
         public void InsertMoney(Money money)
         {
@@ -12,7 +14,7 @@
 
         public void ReturnMoney()
         {
-            //MoneyInTransaction = 0;
+            MoneyInTransaction = None;
         }
 
         public void BuySnack()
