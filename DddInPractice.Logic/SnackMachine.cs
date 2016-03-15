@@ -1,4 +1,6 @@
-﻿using static DddInPractice.Logic.Money;
+﻿using System;
+using System.Linq;
+using static DddInPractice.Logic.Money;
 
 namespace DddInPractice.Logic
 {
@@ -9,6 +11,12 @@ namespace DddInPractice.Logic
 
         public void InsertMoney(Money money)
         {
+            var coinsAndNotes = new [] {Cent, TenCent, Quarter, Dollar, FiveDollar, TwentyDollar};
+            if (!coinsAndNotes.Contains(money))
+            {
+                throw new InvalidOperationException();
+            }
+
             MoneyInTransaction += money;
         }
 
