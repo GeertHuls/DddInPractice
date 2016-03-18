@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using DddInPractice.Logic;
+﻿using DddInPractice.Logic;
 using DddInPractice.UI.Common;
 
 namespace DddInPractice.UI
@@ -47,26 +46,26 @@ namespace DddInPractice.UI
         private void ReturnMoney()
         {
             _snackMachine.ReturnMoney();
-            Notify("MoneyInTransaction");
-            Notify("MoneyInSide");
-            Message = "Money was returned";
+            NotifyClient("Money was returned");
         }
 
         private void BuySnack()
         {
             _snackMachine.BuySnack();
-            Message = "You have bought a snack";
-            Notify("MoneyInTransaction");
-            Notify("MoneyInSide");
+            NotifyClient("You have bought a snack");
         }
 
         private void InsertMoney(Money coinOrNote)
         {
             _snackMachine.InsertMoney(coinOrNote);
-            Notify("MoneyInTransaction");
-            Notify("MoneyInSide");
+            NotifyClient($"You have inserted {coinOrNote}");
+        }
 
-            Message = $"You have inserted {coinOrNote}";
+        private void NotifyClient(string message)
+        {
+            Message = message;
+            Notify(nameof(MoneyInTransaction));
+            Notify(nameof(MoneyInside));
         }
     }
 }
