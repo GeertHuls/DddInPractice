@@ -9,6 +9,7 @@ namespace DddInPractice.UI
         private readonly SnackMachine _snackMachine;
         public override string Caption => "Snack machine";
         public string MoneyInTransaction => _snackMachine.MoneyInTransaction.ToString();
+        public Money MoneyInside => _snackMachine.MoneyInside + _snackMachine.MoneyInTransaction;
 
         private string _message = "";
         public string Message
@@ -53,6 +54,7 @@ namespace DddInPractice.UI
         {
             _snackMachine.InsertMoney(coinOrNote);
             Notify("MoneyInTransaction");
+            Notify("MoneyInSide");
 
             Message = $"You have inserted {coinOrNote}";
         }
