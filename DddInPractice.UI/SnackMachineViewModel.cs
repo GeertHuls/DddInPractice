@@ -11,16 +11,28 @@ namespace DddInPractice.UI
         public string MoneyInTransaction => _snackMachine.MoneyInTransaction.Amount.ToString(CultureInfo.InvariantCulture);
 
         public Command InsertCentCommand { get; private set; }
+        public Command InsertTenCentCommand { get; private set; }
+        public Command InsertQuarterCommand { get; private set; }
+        public Command InsertDollarCommand { get; private set; }
+        public Command InsertFiveDollarCommand { get; private set; }
+        public Command InsertTwentyDollarCommand { get; private set; }
+        public Command ReturnMoneyCommand { get; private set; }
+        public Command BuySnackCommand { get; private set; }
 
         public SnackMachineViewModel(SnackMachine snackMachine)
         {
             _snackMachine = snackMachine;
-            InsertCentCommand = new Command((InsertCent));
+            InsertCentCommand = new Command((() => InsertMoney(Money.Cent)));
+            InsertTenCentCommand = new Command(() => InsertMoney(Money.TenCent));
+            InsertQuarterCommand = new Command(() => InsertMoney(Money.Quarter));
+            InsertDollarCommand = new Command(() => InsertMoney(Money.Dollar));
+            InsertFiveDollarCommand = new Command(() => InsertMoney(Money.FiveDollar));
+            InsertTwentyDollarCommand = new Command(() => InsertMoney(Money.TwentyDollar));
         }
 
-        private void InsertCent()
+        private void InsertMoney(Money coinOrNote)
         {
-            _snackMachine.InsertMoney(Money.Cent);
+            _snackMachine.InsertMoney(coinOrNote);
             Notify("MoneyInTransaction");
         }
     }
