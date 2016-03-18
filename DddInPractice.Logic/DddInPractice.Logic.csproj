@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity.cs" />
+    <Compile Include="Initer.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="SessionFactory.cs" />
     <Compile Include="SnackMachine.cs" />
