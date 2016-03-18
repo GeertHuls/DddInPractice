@@ -3,6 +3,9 @@ using DddInPractice.UI.Common;
 
 namespace DddInPractice.UI
 {
+    /// <summary>
+    /// The viewmodel is the application services layer
+    /// </summary>
     public class SnackMachineViewModel : ViewModel
     {
         private readonly SnackMachine _snackMachine;
