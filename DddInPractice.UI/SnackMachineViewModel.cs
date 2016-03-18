@@ -40,14 +40,24 @@ namespace DddInPractice.UI
             InsertDollarCommand = new Command(() => InsertMoney(Money.Dollar));
             InsertFiveDollarCommand = new Command(() => InsertMoney(Money.FiveDollar));
             InsertTwentyDollarCommand = new Command(() => InsertMoney(Money.TwentyDollar));
-            ReturnMoneyCommand = new Command(BuySnack);
+            ReturnMoneyCommand = new Command(ReturnMoney);
+            BuySnackCommand = new Command(BuySnack);
+        }
+
+        private void ReturnMoney()
+        {
+            _snackMachine.ReturnMoney();
+            Notify("MoneyInTransaction");
+            Notify("MoneyInSide");
+            Message = "Money was returned";
         }
 
         private void BuySnack()
         {
-            _snackMachine.ReturnMoney();
+            _snackMachine.BuySnack();
+            Message = "You have bought a snack";
             Notify("MoneyInTransaction");
-            Message = "Money was returned";
+            Notify("MoneyInSide");
         }
 
         private void InsertMoney(Money coinOrNote)
