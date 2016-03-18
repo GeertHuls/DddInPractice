@@ -8,7 +8,7 @@ namespace DddInPractice.UI
     {
         private readonly SnackMachine _snackMachine;
         public override string Caption => "Snack machine";
-        public string MoneyInTransaction => _snackMachine.MoneyInTransaction.Amount.ToString(CultureInfo.InvariantCulture);
+        public string MoneyInTransaction => _snackMachine.MoneyInTransaction.ToString();
 
         public Command InsertCentCommand { get; private set; }
         public Command InsertTenCentCommand { get; private set; }
