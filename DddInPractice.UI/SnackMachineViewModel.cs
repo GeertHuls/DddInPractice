@@ -10,6 +10,17 @@ namespace DddInPractice.UI
         public override string Caption => "Snack machine";
         public string MoneyInTransaction => _snackMachine.MoneyInTransaction.ToString();
 
+        private string _message = "";
+        public string Message
+        {
+            get { return _message; }
+            private set
+            {
+                _message = value;
+                Notify();
+            }
+        }
+
         public Command InsertCentCommand { get; private set; }
         public Command InsertTenCentCommand { get; private set; }
         public Command InsertQuarterCommand { get; private set; }
@@ -34,6 +45,8 @@ namespace DddInPractice.UI
         {
             _snackMachine.InsertMoney(coinOrNote);
             Notify("MoneyInTransaction");
+
+            Message = $"You have inserted {coinOrNote}";
         }
     }
 }

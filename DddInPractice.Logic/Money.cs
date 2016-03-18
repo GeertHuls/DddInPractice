@@ -125,10 +125,10 @@ namespace DddInPractice.Logic
         {
             if (Amount < 1)
             {
-                return "c" + (Amount*100).ToString("0");
+                return $"c{(Amount*100).ToString("0")}";
             }
 
-            return "$" + Amount.ToString("0.00");
+            return $"${Amount.ToString("0.00")}";
         }
     }
 }
