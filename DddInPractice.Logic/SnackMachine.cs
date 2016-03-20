@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using static DddInPractice.Logic.Money;
 
 namespace DddInPractice.Logic
 {
-    public class SnackMachine : Entity
+    public class SnackMachine : AggregateRoot
     {
         public virtual Money MoneyInside { get; protected set; }
         public virtual Money MoneyInTransaction { get; protected set; }
