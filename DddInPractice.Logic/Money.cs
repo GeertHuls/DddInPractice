@@ -101,6 +101,18 @@ namespace DddInPractice.Logic
                 money1.TwentyDollarCount - money2.TwentyDollarCount);
         }
 
+
+        public static Money operator *(Money money1, int multiplier)
+        {
+            return new Money(
+                money1.OneCentCount * multiplier,
+                money1.TenCentCount * multiplier,
+                money1.QuarterCount * multiplier,
+                money1.OneDollarCount * multiplier,
+                money1.FiveDollarCount * multiplier,
+                money1.TwentyDollarCount * multiplier);
+        }
+
         protected override bool EqualsCore(Money other)
         {
             return OneCentCount == other.OneCentCount &&
