@@ -8,7 +8,7 @@ namespace DddInPractice.Tests
     {
         private readonly string _connectionString= @"Data Source=.\dev;Initial Catalog=SnackMachineDb;Integrated Security=SSPI;";
 
-        [Fact(Skip = "Do not recreate database each time this test runs.")]
+        [Fact]
         public void CreateDatabase()
         {
             SessionFactory.GetConfig(_connectionString)
