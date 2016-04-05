@@ -72,6 +72,13 @@ namespace DddInPractice.UI
         {
             var position = int.Parse(positionString);
 
+            var error = _snackMachine.CanBuySnack(position);
+            if (error != string.Empty)
+            {
+                NotifyClient(error);
+                return;
+            }
+
             _snackMachine.BuySnack(position);
             _repository.Save(_snackMachine);
 
