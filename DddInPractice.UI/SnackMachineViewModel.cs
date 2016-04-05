@@ -45,7 +45,7 @@ namespace DddInPractice.UI
         public Command InsertFiveDollarCommand { get; private set; }
         public Command InsertTwentyDollarCommand { get; private set; }
         public Command ReturnMoneyCommand { get; private set; }
-        public Command BuySnackCommand { get; private set; }
+        public Command<string> BuySnackCommand { get; private set; }
 
         public SnackMachineViewModel(SnackMachine snackMachine)
         {
@@ -59,7 +59,7 @@ namespace DddInPractice.UI
             InsertFiveDollarCommand = new Command(() => InsertMoney(Money.FiveDollar));
             InsertTwentyDollarCommand = new Command(() => InsertMoney(Money.TwentyDollar));
             ReturnMoneyCommand = new Command(ReturnMoney);
-            BuySnackCommand = new Command(BuySnack);
+            BuySnackCommand = new Command<string>(BuySnack);
         }
 
         private void ReturnMoney()
@@ -68,9 +68,11 @@ namespace DddInPractice.UI
             NotifyClient("Money was returned");
         }
 
-        private void BuySnack()
+        private void BuySnack(string positionString)
         {
-            _snackMachine.BuySnack(1);
+            var position = int.Parse(positionString);
+
+            _snackMachine.BuySnack(position);
             _repository.Save(_snackMachine);
 
             NotifyClient("You have bought a snack");
@@ -87,6 +89,7 @@ namespace DddInPractice.UI
             Message = message;
             Notify(nameof(MoneyInTransaction));
             Notify(nameof(MoneyInside));
+            Notify(nameof(Piles));
         }
     }
 }
