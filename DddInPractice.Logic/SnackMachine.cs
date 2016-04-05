@@ -34,6 +34,14 @@ namespace DddInPractice.Logic
             return Slots.Single(x => x.Position == position);
         }
 
+        public virtual IReadOnlyCollection<SnackPile> GetAllSnackPiles()
+        {
+            return Slots
+                .OrderBy(s => s.Position)
+                .Select(s => s.SnackPile)
+                .ToList();
+        }
+
         public virtual void InsertMoney(Money money)
         {
             var coinsAndNotes = new [] {Cent, TenCent, Quarter, Dollar, FiveDollar, TwentyDollar};

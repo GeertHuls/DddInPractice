@@ -1,4 +1,6 @@
-﻿using DddInPractice.Logic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using DddInPractice.Logic;
 using DddInPractice.UI.Common;
 
 namespace DddInPractice.UI
@@ -23,6 +25,16 @@ namespace DddInPractice.UI
                 Notify();
             }
         }
+
+        public IReadOnlyCollection<SnackPileViewModel> Piles
+        {
+            get
+            {
+                return _snackMachine.GetAllSnackPiles()
+                    .Select(sp => new SnackPileViewModel(sp))
+                    .ToList();
+            }
+        } 
 
         public Command InsertCentCommand { get; private set; }
         public Command InsertTenCentCommand { get; private set; }
