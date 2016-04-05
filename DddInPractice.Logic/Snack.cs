@@ -2,6 +2,8 @@
 {
     public class Snack : AggregateRoot
     {
+        //When types are defined explictly in code
+        //you should write integration test to verify its existance in the database
         public static readonly Snack None = new Snack(0, "None");
         public static readonly Snack Chocolate = new Snack(1, "Chocolate");
         public static readonly Snack Soda = new Snack(2, "Soda");

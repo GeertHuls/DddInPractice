@@ -15,7 +15,7 @@
         {
             SnackMachine = snackMachine;
             Position = position;
-            SnackPile = new SnackPile(Snack.None, 0, 0m);
+            SnackPile = SnackPile.Empty;
         }
     }
 }
