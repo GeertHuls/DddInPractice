@@ -11,6 +11,8 @@ namespace DddInPractice.UI
     public class SnackMachineViewModel : ViewModel
     {
         private readonly SnackMachine _snackMachine;
+        private readonly SnackMachineRepository _repository;
+
         public override string Caption => "Snack machine";
         public string MoneyInTransaction => _snackMachine.MoneyInTransaction.ToString();
         public Money MoneyInside => _snackMachine.MoneyInside;
@@ -48,6 +50,8 @@ namespace DddInPractice.UI
         public SnackMachineViewModel(SnackMachine snackMachine)
         {
             _snackMachine = snackMachine;
+            _repository = new SnackMachineRepository();
+
             InsertCentCommand = new Command((() => InsertMoney(Money.Cent)));
             InsertTenCentCommand = new Command(() => InsertMoney(Money.TenCent));
             InsertQuarterCommand = new Command(() => InsertMoney(Money.Quarter));
@@ -67,12 +71,7 @@ namespace DddInPractice.UI
         private void BuySnack()
         {
             _snackMachine.BuySnack(1);
-            using (var session = SessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                session.SaveOrUpdate(_snackMachine);
-                transaction.Commit();
-            }
+            _repository.Save(_snackMachine);
 
             NotifyClient("You have bought a snack");
         }

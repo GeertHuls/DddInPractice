@@ -6,11 +6,7 @@ namespace DddInPractice.UI.Common
     {
         public MainViewModel()
         {
-            SnackMachine snackMachine;
-            using (var session = SessionFactory.OpenSession())
-            {
-                snackMachine = session.Get<SnackMachine>(1L);
-            }
+            var snackMachine = new SnackMachineRepository().GetById(1);
 
             var viewModel = new SnackMachineViewModel(snackMachine);
             DialogService.ShowDialog(viewModel);
