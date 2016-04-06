@@ -1,9 +1,11 @@
 ﻿using System.IO;
 using DddInPractice.Logic;
+using DddInPractice.Logic.SnackMachines;
+using DddInPractice.Logic.Utils;
 using log4net.Config;
 using NHibernate.Tool.hbm2ddl;
 using Xunit;
-using static DddInPractice.Logic.Money;
+using static DddInPractice.Logic.SnackMachines.Money;
 
 namespace DddInPractice.Tests
 {

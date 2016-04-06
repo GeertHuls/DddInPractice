@@ -1,4 +1,5 @@
 ﻿using DddInPractice.Logic;
+using DddInPractice.Logic.SnackMachines;
 
 namespace DddInPractice.UI.Common
 {

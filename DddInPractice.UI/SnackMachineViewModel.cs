@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DddInPractice.Logic;
+using DddInPractice.Logic.SnackMachines;
 using DddInPractice.UI.Common;
 
 namespace DddInPractice.UI
