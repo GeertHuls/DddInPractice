@@ -1,7 +1,7 @@
 using System;
 using DddInPractice.Logic.Common;
 
-namespace DddInPractice.Logic.SnackMachines
+namespace DddInPractice.Logic.SharedKernel
 {
     public sealed class Money : ValueObject<Money>
     {

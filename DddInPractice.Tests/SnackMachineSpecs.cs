@@ -4,7 +4,7 @@ using DddInPractice.Logic.SnackMachines;
 using FluentAssertions;
 using Xunit;
 
-using static DddInPractice.Logic.SnackMachines.Money;
+using static DddInPractice.Logic.SharedKernel.Money;
 using static DddInPractice.Logic.SnackMachines.Snack;
 
 namespace DddInPractice.Tests

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DddInPractice.Logic.Common;
+using DddInPractice.Logic.SharedKernel;
 
 namespace DddInPractice.Logic.SnackMachines
 {

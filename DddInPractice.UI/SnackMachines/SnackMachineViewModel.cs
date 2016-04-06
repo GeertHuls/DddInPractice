@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DddInPractice.Logic.SharedKernel;
 using DddInPractice.Logic.SnackMachines;
 using DddInPractice.UI.Common;
 
