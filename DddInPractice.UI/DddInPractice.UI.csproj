@@ -78,8 +78,8 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\ViewModel.cs" />
-    <Compile Include="SnackMachineViewModel.cs" />
-    <Compile Include="SnackPileViewModel.cs" />
+    <Compile Include="SnackMachines\SnackMachineViewModel.cs" />
+    <Compile Include="SnackMachines\SnackPileViewModel.cs" />
     <Compile Include="Utils\DialogService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +135,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SnackMachineViewModel.xaml">
+    <Page Include="SnackMachines\SnackMachineViewModel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -145,6 +145,9 @@
       <Project>{9EB9F0CE-0550-4808-90D7-9D60395F5EC8}</Project>
       <Name>DddInPractice.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Atms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
