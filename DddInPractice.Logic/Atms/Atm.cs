@@ -16,8 +16,20 @@ namespace DddInPractice.Logic.Atms
             var output = MoneyInside.Allocate(amount);
             MoneyInside -= output;
 
-            var amountWithCommission = amount + amount * CommissionRate;
+            var amountWithCommission = CalculateAmountWithCommission(amount);
             MoneyCharged += amountWithCommission;
+        }
+
+        private decimal CalculateAmountWithCommission(decimal amount)
+        {
+            var commission = amount * CommissionRate;
+            var lessThanCent = commission % 0.01m;
+            if (lessThanCent > 0)
+            {
+                commission = commission - lessThanCent + 0.01m;
+            }
+
+            return amount + commission;
         }
 
         public void LoadMoney(Money money)
