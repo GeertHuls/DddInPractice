@@ -38,7 +38,7 @@ namespace DddInPractice.Logic.Atms
             MoneyCharged += amountWithCommission;
         }
 
-        private decimal CalculateAmountWithCommission(decimal amount)
+        public virtual decimal CalculateAmountWithCommission(decimal amount)
         {
             var commission = amount * CommissionRate;
             var lessThanCent = commission % 0.01m;
@@ -50,7 +50,7 @@ namespace DddInPractice.Logic.Atms
             return amount + commission;
         }
 
-        public void LoadMoney(Money money)
+        public virtual void LoadMoney(Money money)
         {
             MoneyInside += money;
         }
