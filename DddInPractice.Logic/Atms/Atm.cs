@@ -1,11 +1,14 @@
 using DddInPractice.Logic.Common;
 using DddInPractice.Logic.SharedKernel;
+using static DddInPractice.Logic.SharedKernel.Money;
 
 namespace DddInPractice.Logic.Atms
 {
     public class Atm : AggregateRoot
     {
-        public virtual Money MoneyInside { get; protected set; } = Money.None;
+        private const decimal CommissionRate = 0.01m;
+
+        public virtual Money MoneyInside { get; protected set; } = None;
         public virtual decimal MoneyCharged { get; protected set; }
 
         public virtual void TakeMoney(decimal amount)
@@ -13,7 +16,7 @@ namespace DddInPractice.Logic.Atms
             var output = MoneyInside.Allocate(amount);
             MoneyInside -= output;
 
-            var amountWithCommission = amount + amount * 0.01m;
+            var amountWithCommission = amount + amount * CommissionRate;
             MoneyCharged += amountWithCommission;
         }
 
