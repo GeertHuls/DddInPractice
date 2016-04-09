@@ -20,7 +20,7 @@ namespace DddInPractice.Logic.Atms
             if (MoneyInside.Amount < amount)
                 return "Not enough money";
 
-            if (MoneyInside.CanAllocate(amount))
+            if (!MoneyInside.CanAllocate(amount))
                 return "Not enough change";
 
             return string.Empty;
