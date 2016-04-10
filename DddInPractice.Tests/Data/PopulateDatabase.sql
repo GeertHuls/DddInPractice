@@ -23,10 +23,14 @@ SELECT 3, 3, 1, 10, 6.00000, 3;
 INSERT INTO [dbo].[Atm]([AtmID], [MoneyCharged], [OneCentCount], [TenCentCount], [QuarterCount], [OneDollarCount], [FiveDollarCount], [TwentyDollarCount])
 SELECT 1, 0.00000, 1, 1, 1, 1, 1, 1;
 
+INSERT INTO [dbo].[HeadOffice]([HeadOfficeID], [Balance], [OneCentCount], [TenCentCount], [QuarterCount], [OneDollarCount], [FiveDollarCount], [TwentyDollarCount])
+SELECT 1, 10.00000, 20, 20, 20, 20, 20, 20
+
 DELETE FROM [dbo].[Ids] WHERE EntityName IS NULL;
 
 INSERT INTO [dbo].[Ids]([NextHigh], [EntityName])
 SELECT 1, N'Atm' UNION ALL
 SELECT 1, N'Slot' UNION ALL
 SELECT 1, N'Snack' UNION ALL
-SELECT 1, N'SnackMachine';
+SELECT 1, N'SnackMachine' UNION ALL
+SELECT 1, N'HeadOffice';
