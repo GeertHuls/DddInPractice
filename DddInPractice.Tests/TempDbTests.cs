@@ -1,7 +1,9 @@
 ﻿using System.IO;
 using DddInPractice.Logic;
+using DddInPractice.Logic.Management;
 using DddInPractice.Logic.SnackMachines;
 using DddInPractice.Logic.Utils;
+using FluentAssertions;
 using log4net.Config;
 using NHibernate.Tool.hbm2ddl;
 using Xunit;
@@ -49,6 +51,16 @@ namespace DddInPractice.Tests
             snackMachine.InsertMoney(Dollar);
             snackMachine.BuySnack(1);
             repository.Save(snackMachine);
+        }
+
+        [Fact(Skip = "Test head office singleton instance by loading from database.")]
+        public void CanLoadHeadCompanyInstance()
+        {
+            HeadOfficeInstance.Init();
+            var office = HeadOfficeInstance.Instance;
+
+            office.Should().NotBe(null);
+            office.Id.Should().Be(1);
         }
     }
 }
