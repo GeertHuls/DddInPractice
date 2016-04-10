@@ -1,5 +1,7 @@
 ﻿using DddInPractice.Logic.Atms;
+using DddInPractice.Logic.Common;
 using DddInPractice.Logic.SharedKernel;
+using DddInPractice.Logic.Utils;
 using FluentAssertions;
 using Xunit;
 using static DddInPractice.Logic.SharedKernel.Money;
@@ -39,6 +41,22 @@ namespace DddInPractice.Tests
             atm.TakeMoney(1.1m);
 
             atm.MoneyCharged.Should().Be(1.12m);
+        }
+
+        [Fact(Skip = "This test integrates with a database to fetch the head office.")]
+        public void Take_money_raises_an_event()
+        {
+            Initer.Init(@"Data Source=.\dev;Initial Catalog=SnackMachineDb;Integrated Security=SSPI;");
+
+            var atm = new Atm();
+            atm.LoadMoney(Dollar);
+            BalanceChangedEvent balanceChangedEvent = null;
+            DomainEvents.Register<BalanceChangedEvent>(ev => balanceChangedEvent = ev);
+
+            atm.TakeMoney(1m);
+
+            balanceChangedEvent.Should().NotBeNull();
+            balanceChangedEvent.Delta.Should().Be(1.01m);
         }
     }
 }

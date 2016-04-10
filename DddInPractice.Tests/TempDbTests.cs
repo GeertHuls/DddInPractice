@@ -59,7 +59,7 @@ namespace DddInPractice.Tests
             HeadOfficeInstance.Init();
             var office = HeadOfficeInstance.Instance;
 
-            office.Should().NotBe(null);
+            office.Should().NotBeNull();
             office.Id.Should().Be(1);
         }
     }
