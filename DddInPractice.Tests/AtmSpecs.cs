@@ -1,8 +1,7 @@
 ﻿using DddInPractice.Logic.Atms;
-using DddInPractice.Logic.Common;
-using DddInPractice.Logic.SharedKernel;
 using DddInPractice.Logic.Utils;
 using FluentAssertions;
+using NHibernate.Util;
 using Xunit;
 using static DddInPractice.Logic.SharedKernel.Money;
 
@@ -50,13 +49,9 @@ namespace DddInPractice.Tests
 
             var atm = new Atm();
             atm.LoadMoney(Dollar);
-            BalanceChangedEvent balanceChangedEvent = null;
-            DomainEvents.Register<BalanceChangedEvent>(ev => balanceChangedEvent = ev);
-
             atm.TakeMoney(1m);
 
-            balanceChangedEvent.Should().NotBeNull();
-            balanceChangedEvent.Delta.Should().Be(1.01m);
+            atm.ShouldContainBalanceChangeEvents(1.01m);
         }
     }
 }

@@ -79,6 +79,7 @@
     <Compile Include="SnackMachines\SnackMachineRepository.cs" />
     <Compile Include="SnackMachines\SnackMap.cs" />
     <Compile Include="SnackMachines\SnackPile.cs" />
+    <Compile Include="Utils\EventListener.cs" />
     <Compile Include="Utils\Initer.cs" />
     <Compile Include="Utils\SessionFactory.cs" />
   </ItemGroup>
