@@ -6,7 +6,7 @@ namespace DddInPractice.UI.Common
 {
     public abstract class ViewModel : INotifyPropertyChanged
     {
-        protected static readonly DialogService DialogService = new DialogService();
+        protected static readonly DialogService _dialogService = new DialogService();
         public event PropertyChangedEventHandler PropertyChanged;
 
         private bool? _dialogResult;

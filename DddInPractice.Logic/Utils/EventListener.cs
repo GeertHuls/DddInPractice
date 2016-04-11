@@ -32,6 +32,9 @@ namespace DddInPractice.Logic.Utils
 
         private void DispatchEvents(AggregateRoot aggregateRoot)
         {
+            if (aggregateRoot == null)
+                return;
+
             foreach (var domainEvent in aggregateRoot.DomainEvents)
             {
                 DomainEvents.Dispatch(domainEvent);

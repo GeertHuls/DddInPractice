@@ -101,5 +101,15 @@ namespace DddInPractice.Logic.SnackMachines
         {
             MoneyInside += dollar;
         }
+
+        public virtual Money UnloadMoney()
+        {
+            if (MoneyInTransaction > 0)
+                throw new InvalidOperationException();
+
+            var money = MoneyInside;
+            MoneyInside = Money.None;
+            return money;
+        }
     }
 }

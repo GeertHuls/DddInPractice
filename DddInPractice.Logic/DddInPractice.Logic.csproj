@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Atms\Atm.cs" />
+    <Compile Include="Atms\AtmDto.cs" />
     <Compile Include="Atms\AtmMap.cs" />
     <Compile Include="Atms\AtmRepository.cs" />
     <Compile Include="Atms\BalanceChangedEvent.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="SnackMachines\SlotMap.cs" />
     <Compile Include="SnackMachines\Snack.cs" />
     <Compile Include="SnackMachines\SnackMachine.cs" />
+    <Compile Include="SnackMachines\SnackMachineDto.cs" />
     <Compile Include="SnackMachines\SnackMachineMap.cs" />
     <Compile Include="SnackMachines\SnackMachineRepository.cs" />
     <Compile Include="SnackMachines\SnackMap.cs" />
