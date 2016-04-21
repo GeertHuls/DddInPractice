@@ -10,3 +10,8 @@ Basically this is just an attempt to learn how to properly model software.
 ## Usage
 - Use the CreateDatabase method from the TempDbTests class to generate the SnackMachine database
 - Execute the PopulateDatabase.sql script to populate the newly created database
+
+## Pluralsight
+
+The code is entirely based on [@vkhorikov](https://github.com/vkhorikov)'s excellent course on pluralsight:
+https://app.pluralsight.com/library/courses/domain-driven-design-in-practice
